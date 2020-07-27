@@ -11,3 +11,7 @@ tmp
 *.swp
 
 db/*.db
+
+.env
+
+#Add database files in here
