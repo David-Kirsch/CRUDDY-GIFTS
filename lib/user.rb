@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
 
     def see_all_gifts_received
         grab_all_gifts.map do |gift|
-           "From: #{gift.giver.name} ----> Gift: #{gift.item.brand}, #{gift.item.name}"
+           "From #{gift.giver.name}: #{gift.item.brand} - #{gift.item.name}"
         end
     end
 
@@ -24,8 +24,24 @@ class User < ActiveRecord::Base
     end
 
     def all_gifts_exchanged
-        grab_all_gifts + self.given.map do |gift|
-            gift
+        Gift.all.select do |gift|
+            if(gift.receiver_id == self.id|| gift.giver_id == self.id)
+                gift
+            end
+        end
+    end
+
+    def all_gifts_given
+        self.given.map do |gift|
+            "To #{gift.receiver.name}: #{gift.item.brand} - #{gift.item.name}"
+        end
+    end
+
+    def gifts_given_to(person)
+        all_gifts_given.select do |gift|
+            if(gift.downcase.include?(person.downcase))
+                gift
+            end
         end
     end
 
@@ -48,4 +64,31 @@ class User < ActiveRecord::Base
         Gift.create(occasion: occasion, giver_id: self.id, receiver_id: person_instance.id, item_id: item_instance.id)
     end
 
+    def find_instances_by_occasion(occ)
+        all_gifts_exchanged.select do |gift|
+            if(gift.occasion.downcase == occ.downcase)
+                gift
+            end
+        end
+    end
+
+    def find_gift_by_occasion(occ)
+        find_instances_by_occasion(occ).map do |gift|
+            "#{gift.item.brand} - #{gift.item.name} : $#{gift.item.price}"
+        end.uniq
+    end
+
+    def find_instance_by_category(cat)
+        all_gifts_exchanged.select do |gift|
+            if(gift.item.category.downcase == cat.downcase)
+                gift
+            end
+        end
+    end
+
+    def find_gift_by_category(cat)
+        find_instance_by_category(cat).map do |gift|
+            "#{gift.item.brand} - #{gift.item.name} : $#{gift.item.price}"
+        end.uniq
+    end
 end
