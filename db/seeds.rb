@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-# Seed data for testing
-
-
-=======
 require_relative '../lib/user'
 require_relative '../lib/gift'
 
@@ -22,4 +17,3 @@ Gift.create(occasion: "Birthday", giver_id: User.all[2].id, receiver_id: User.al
 # Gift.create(occasion: "Wedding", user_id: User.all[2].id, item_id: 4)
 # Gift.create(occasion: "Anniversary", user_id: User.all[3].id, item_id: 5)
 # Gift.create(occasion: "Graduation", user_id: User.all[4].id, item_id: 6)
->>>>>>> davids_branch

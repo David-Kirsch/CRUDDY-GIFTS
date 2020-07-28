@@ -10,17 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2020_07_28_122909) do
-
-  create_table "stores", force: :cascade do |t|
-    t.string "category"
-    t.string "name"
-    t.string "brand"
-    t.float "price"
-    t.string "description"
-=======
-ActiveRecord::Schema.define(version: 2020_07_28_034405) do
 
   create_table "gifts", force: :cascade do |t|
     t.string "occasion"
@@ -29,10 +19,17 @@ ActiveRecord::Schema.define(version: 2020_07_28_034405) do
     t.integer "receiver_id"
   end
 
+  create_table "stores", force: :cascade do |t|
+    t.string "category"
+    t.string "name"
+    t.string "brand"
+    t.float "price"
+    t.string "description"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "name"
     t.integer "dob"
->>>>>>> davids_branch
   end
 
 end
