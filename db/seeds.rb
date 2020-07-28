@@ -32,11 +32,17 @@ Item.create(name: "AirPods Pro", brand: "Apple", price: 249.99, category: "Elect
 # Item.new(name: , brand: , price: , category: , description: )
 # Item.new(name: , brand: , price: , category: , description: )
 
-Gift.create(occasion: "Birthday", giver_id: User.all[0].id, receiver_id: User.all[1].id, item_id: Item.all[0].id)
+Gift.create(occasion: "Birthday", giver_id: User.all[0].id, receiver_id: User.all[1].id, item_id: Item.all[1].id)
 Gift.create(occasion: "Birthday", giver_id: User.all[2].id, receiver_id: User.all[0].id, item_id: Item.all[1].id)
+<<<<<<< HEAD
 # Gift.create(occasion: "Birthday", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: 1)
 # Gift.create(occasion: "Wedding", giver_id: User.all[2].id, receiver_id: User.all[4].id, item_id: 4)
 Gift.create(occasion: "Anniversary", giver_id: User.all[3].id, receiver_id: User.all[0].id, item_id: Item.all[0].id)
+=======
+# Gift.create(occasion: "Birthday", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: 4)
+# Gift.create(occasion: "Wedding", giver_id: User.all[2].id, receiver_id: User.all[4].id, item_id: 4)
+# Gift.create(occasion: "Anniversary", giver_id: User.all[3].id, receiver_id: User.all[0].id, item_id: 5)
+>>>>>>> 561f517afa982b005c4ece0f10a67a60d05047a2
 # Gift.create(occasion: "Graduation", giver_id: User.all[4].id, receiver_id: User.all[2].id, item_id: 6)
 
 
