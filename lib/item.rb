@@ -13,7 +13,7 @@ class Item < ActiveRecord::Base
 
     #4. Most expensive gift given and to whom
 
-    #5. Stores by themes (sort by Group attribute)
+    #5. Items by themes (sort by Group attribute)
 
 
 
