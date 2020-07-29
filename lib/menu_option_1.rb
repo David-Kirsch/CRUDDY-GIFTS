@@ -2,50 +2,70 @@ require_relative './user'
 require_relative './gift'
 require_relative './item'
 require_relative './cli_functions'
+require "date"
+
 
 
 
 class CLI1
 
-    def summary_of_options
+# Option Master Menu and Executable Commands
+
+    def self.summary_of_options
         puts "Please choose from the following selections:"
         puts "************** GENERAL SEARCH *******************"
         puts "1. View the whole gift store"
         puts "2. Find gifts within your budget"
         puts "3. Find gifts by category"
-        puts "4. Find a certain gift by name"
+        puts "4. Find a gift by name"
         puts "************** SPECIFIC SEARCH *******************"
         puts "5. See upcoming birthdays (in the next 3 months)"
         puts "6. Give a gift to a friend"
-
         user_input = gets.chomp
     end
 
+    def self.run_option1(input)
+        case input
+        when 1
+            self.view_gift_store
+        when 2
+            self.find_items_in_budget
+        when 3
+            self.find_items_in_category
+        when 4
+            self.find_items_by_name
+        when 5
+            self.upcoming_birthday
+        when 6
+            self.user_info.give_a_gift
+        end
+    end
+
+#Supporting Methods for each case
+
+    def self.user_info
+        CLI.user_data
+    end
 
 # Option 1
 
     def self.view_gift_store
         puts "CRUDDY Gifts Store Item List"
-        Gift.all.each do |gift|
-            puts "Gift Name: #{gift.name}"
-            puts "Gift Brand: #{gift.brand}"
-            puts "Price: #{gift.price}"
-            puts "Product Description: #{gift.description}"
-            puts "Press enter to see next product."
-            next_item = gets.chomp
+        Item.all.each do |item|
+            Item.output_formatted(item)
         end
     end
 
 # Option 2
 
-    def self.find_gifts_in_budget
-        puts "CRUDDY Gifts Budget Filter. Please type 'exit'" 
-        puts "to leave this page and head back to to the option menu."
+    def self.find_items_in_budget
+        puts "CRUDDY Gifts Budget Filter" 
+        self.exit_prompt
         puts "Please enter your gift budget:"
         price_budget = gets.chomp
         if price_budget != "exit"
-            price_budget = price_budget.to_i
-            Gift.price_sorted_by_threshold(price_budget)
+            price_budget = price_budget.to_f
+            Item.price_sorted_by_threshold(price_budget)
         else
             "Thanks for using CRUDDY gifts. See you again!"
         end
@@ -53,13 +73,13 @@ class CLI1
 
 # Option 3
 
-    def self.find_gifts_in_category
-        puts "CRUDDY Gifts Category Filter. Please type 'exit'" 
-        puts "to leave this page and head back to to the option menu."
+    def self.find_items_in_category
+        puts "CRUDDY Gifts Category Filter" 
+        self.exit_prompt
         puts "Please enter your gift category:"
         gift_category = gets.chomp
         if gift_category != "exit"
-            Gift.category_sorted(gift_category)
+            Item.category_sorted(gift_category)
         else
             "Thanks for using CRUDDY gifts. See you again!"
         end
@@ -67,13 +87,13 @@ class CLI1
 
 # Option 4
 
-    def self.find_gifts_by_name
-        puts "CRUDDY Gifts Search Filter. Please type 'exit'" 
-        puts "to leave this page and head back to to the option menu."
+    def self.find_items_by_name
+        puts "CRUDDY Gifts Search Filter" 
+        self.exit_prompt
         puts "Please enter your gift name or keywords:"
         gift_name = gets.chomp
         if gift_name != "exit"
-            Gift.find_by_name(gift_name)
+            Item.find_by_name(gift_name)
         else
             "Thanks for using CRUDDY gifts. See you again!"
         end
@@ -95,24 +115,13 @@ class CLI1
 
 # Option 6
 
-    def give_birthday_gift
-        puts "Please enter the name of a friend you want to send a gift to: "
-        friend_name = gets.chomp
-        if User.find_by(name: friend_name)
-            friend_profile = User.all.select{|user| user.name == friend_name}
-            puts "Please enter the name of the gift you would like to give: "
-            gift_name = gets.chomp
+#>> In User class
 
-        else
-            puts "You seem like a new user. Would you like to make a new profile? (y/n)"
-            response = gets.chomp
-            if response == "y"
-                puts "Please enter your password:"
-                new_pw = gets.chomp
-                puts "Please enter you date of birthday (as yyyymmdd): "
-                new_dob = gets.chomp.to_i
-                user_profile = User.create(name:user_name, dob:new_dob)
-    end 
+# Helper Functions
+
+    def self.exit_prompt
+        puts "Please type 'exit' to leave this page and head back to to the option menu."
+    end
 
 
 end

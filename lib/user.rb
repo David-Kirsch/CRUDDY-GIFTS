@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     #get the values from instances of #grab_all_gifts
     def see_all_gifts_received
         grab_all_gifts.map do |gift|
-           "From #{gift.giver.name}: #{gift.item.brand} - #{gift.item.name}"
+           puts "From #{gift.giver.name}: #{gift.item.brand} - #{gift.item.name}"
         end
     end
 
@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
     #lists all the gifts that has been given
     def all_gifts_given
         self.given.map do |gift|
-            "To #{gift.receiver.name}: #{gift.item.brand} - #{gift.item.name}"
+            puts "To #{gift.receiver.name}: #{gift.item.brand} - #{gift.item.name}"
         end
     end
 
@@ -65,11 +65,28 @@ class User < ActiveRecord::Base
     end
 
     #give a gift to someone
-    def give_a_gift(person, occasion, item)
-        person_instance = User.find_by(name: person)
-        item_instance = Item.find_by(name: item)
-        binding.pry
-        Gift.create(occasion: occasion, giver_id: self.id, receiver_id: person_instance.id, item_id: item_instance.id)
+    def give_a_gift
+        puts "Please enter the name of a friend you want to send a gift to: "
+        friend_name = gets.chomp
+        if User.find_by(name: friend_name)
+            friend_profile = User.find_by(name: friend_name)
+        else
+            puts "Receipient not found. Would you like to create a new receipient? (y/n)"
+            response = gets.chomp
+            if response == "y"
+                puts "Please enter the name:"
+                new_name = gets.chomp
+                puts "Please enter you date of birthday (as yyyy/mm/dd): "
+                new_dob = gets.chomp
+                friend_profile = User.create(name: new_name, dob:new_dob)
+            else
+                "Unable to give a gift. Please try again later."
+            end
+        end
+        chosen_gift = CLI1.find_items_by_name
+        puts "Enter the occasion for the gift:"
+        gift_occasion = gets.chomp
+        puts "You have given #{friend_name} a(n) #{chosen_gift.first.name} for their #{gift_occasion}!"
     end
 
     #grabs all the Gift instances by the occasion attr

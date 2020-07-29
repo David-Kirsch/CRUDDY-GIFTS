@@ -1,21 +1,27 @@
 require_relative '../config/environment'
-
+require "pry"
 
 CLI.welcome
-CLI2.upcoming_birthday
-CLI.login
-CLI.all[0].view_profile
-home_menu_option = CLI.view_menu
-if home_menu_option == "1"
-    option1_menu = CLI1.summary_of_options
+user = CLI.login
+CLI.view_profile
+while true do
+    selection1 = CLI.view_menu.to_i
+    if selection1 == 1
+        selection2 = CLI1.summary_of_options.to_i
+        CLI1.run_option1(selection2)
+        puts "Please enter to continue or type 'exit' to exit program"
+        exit_call = gets.chomp
+        if exit_call == "exit"
+            return false
+        end
+    end
+    if selection1 == 2
+        selection2 = CLI2.summary_of_options.to_i
+        CLI2.run_option2(selection2)
+        puts "Please enter to continue or type 'exit' to exit program"
+        exit_call = gets.chomp
+        if exit_call == "exit"
+            return false
+        end
+    end
 end
-if home_menu_option == "2"
-    #Body
-end
-if home_menu_option == "3"
-    #Body
-end
-
-
-
-puts "HELLO WORLD"
