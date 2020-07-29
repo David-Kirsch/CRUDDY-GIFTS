@@ -11,12 +11,16 @@ class Gift < ActiveRecord::Base
     end
     
     # Gives names if people who have given or received specific instance of tha that Gift
-    def given_or_received
-        received_items = Gift.all.map{|gift| gift.receiver.name if gift.item_id == self.id}.compact.join("")
+    def gifts_given
         given_items = Gift.all.map{|gift| gift.giver.name if gift.item_id == self.id}.compact.join("")
         puts "People who have given this gift: #{given_items}"
+    end
+    
+    def gifts_received
+        received_items = Gift.all.map{|gift| gift.receiver.name if gift.item_id == self.id}.compact.join("")
         puts "People who have received this gift: #{received_items}"
     end
+
 
     # Counts how popular a specific instance of the gift is
     def popularity
