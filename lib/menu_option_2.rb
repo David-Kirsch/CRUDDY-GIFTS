@@ -24,29 +24,29 @@ class CLI2
         case input
         when 1
             puts "Here is a list of all the gifts you have received:"
-            self.user_info.see_all_gifts_received
+            puts self.user_info.see_all_gifts_received
         when 2
             puts "Here is a list of all the gifts you have given:"
-            self.user_info.all_gifts_given
+            puts self.user_info.all_gifts_given
         when 3
             puts "Here is a list of all your friends: (Anyone you have had an exchange with)"
-            self.user_info.see_all_friends
+            puts self.user_info.see_all_friends
         when 4
             puts "Please enter the name of your friend who you want to see gifts from:"
             friend = gets.chomp
-            self.user_info.see_all_gifts_from(friend)
+            puts self.user_info.see_all_gifts_from(friend)
         when 5
             puts "Please enter the name of your friend who you gave a gift to:"
             friend = gets.chomp
-            self.user_info.gifts_given_to(friend)
+            puts self.user_info.gifts_given_to(friend)
         when 6
             puts "Enter the occasion you are looking for gifts by:"
             occasion = gets.chomp
-            self.user_info.find_gift_by_occasion(occasion)
+            puts self.user_info.find_gift_by_occasion(occasion)
         when 7
             puts "Enter the category you are looking for gifts by:"
             category = gets.chomp
-            self.user_info.find_gift_by_category(category)
+            puts self.user_info.find_gift_by_category(category)
         end
     end  
 
