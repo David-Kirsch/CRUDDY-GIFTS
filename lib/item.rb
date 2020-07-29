@@ -40,13 +40,11 @@ class Item < ActiveRecord::Base
     end
 
 
-    # #See whether this item has been given as a gift
+    #See whether this item has been given as a gift
 
-    # def self.gifts_not_given_yet
-    #     gifts_not_given = Gift.select{|gift| gift.receiver.count == 0}
-    # end
-
-
-
+    def self.gifts_not_given_yet
+        gifts_not_given = Gift.select{|gift| gift.name if gift.popularity_count == 0}
+        "The following items have not been given yet : #{gifts_not_given}"
+    end
 
 end
