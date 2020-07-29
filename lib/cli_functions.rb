@@ -18,11 +18,6 @@ class CLI
 
     end
 
-
-
-
-
-
 # Sub-methods for compiled CLI master methods
 
     def self.login
@@ -39,12 +34,8 @@ class CLI
                 puts "Please enter your password:"
                 new_pw = gets.chomp
                 puts "Please enter you date of birthday (as mmddyyyy): "
-                new_dob = gets.chomp
-                if(new_dob[0] == '0')
-                    new_dob = '1'+ new_dob
-                end
-                binding.pry
-                new_user = User.create(name:user_name, dob:new_dob.to_i)
+                new_dob = gets.chomp.to_i
+                new_user = User.create(name:user_name, dob:new_dob)
             else
                 puts "Thanks for using CRUDDY Gifts. We look forward to seeing you soon."
             end
@@ -61,10 +52,14 @@ class CLI
     def view_menu
         puts "What would you like to do? Please select from the options below."
         puts "1. View the gift store"
-        puts "2. View an upcoming birthday"
+        puts "2. View an upcoming birthday and give a gift"
         puts "3. Analyse your gift profile"
         user_input = gets.chomp
     end
+
+
+
+
 
 
 end

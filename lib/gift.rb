@@ -24,7 +24,10 @@ class Gift < ActiveRecord::Base
 
     # Counts how popular a specific instance of the gift is
     def popularity
-        counter = Gift.count{|gift| gift.item_id==self.item_id}
+        counter = Gift.all.count do |gift|
+            gift.item_id==self.item_id
+            binding.pry
+        end 
         puts "This gift has been given/received #{counter} time(s)."
     end
     
