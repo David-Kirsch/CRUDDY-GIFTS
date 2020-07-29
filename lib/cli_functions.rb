@@ -1,6 +1,6 @@
-require_relative './lib/user'
-require_relative './lib/gift'
-require_relative './lib/item'
+# require_relative './user'
+# require_relative './gift'
+# require_relative './item'
 
 
 class CLI
@@ -40,7 +40,11 @@ class CLI
                 new_pw = gets.chomp
                 puts "Please enter you date of birthday (as mmddyyyy): "
                 new_dob = gets.chomp
-                new_user = User.create(name:user_name, dob:new_dob)
+                if(new_dob[0] == '0')
+                    new_dob = '1'+ new_dob
+                end
+                binding.pry
+                new_user = User.create(name:user_name, dob:new_dob.to_i)
             else
                 puts "Thanks for using CRUDDY Gifts. We look forward to seeing you soon."
             end
@@ -63,14 +67,5 @@ class CLI
     end
 
 
-
-
-
-
-
-
-
-
-
-
 end
+
