@@ -20,7 +20,7 @@ class Gift < ActiveRecord::Base
 
     # Counts how popular a specific instance of the gift is
     def popularity
-        counter = Gift.count{|gift| gift==self}
+        counter = Gift.count{|gift| gift.item_id==self.item_id}
         puts "This gift has been given/received #{counter} time(s)."
     end
     
@@ -47,5 +47,10 @@ class Gift < ActiveRecord::Base
         gift_occasion = Gift.all.map{|gift| gift.item.name if gift.occasion = occasion}.compact.uniq.join("")
         puts "These were the gifts given for #{occasion.pluralize}: #{gift_occasion}."
     end
+
+    def popularity_count
+        Gift.count{|gift| self.item_id == gift.item_id}
+    end
+    
 
 end
