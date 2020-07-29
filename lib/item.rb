@@ -3,10 +3,7 @@ class Item < ActiveRecord::Base
     has_many :users, through: :gifts
 
 
-    #Potential Methods to Build
-
-
-    #4. Sort items in store by price
+    #Sort items in store by price
     def self.price_sorted
         item_list = {}
         sorted_by_price = Item.all.sort_by{|item| item.price}
@@ -31,7 +28,7 @@ class Item < ActiveRecord::Base
     # Items by themes (sort by Group attribute)
     def self.category_sorted(category)
         item_list = {}
-        sorted_by_cat = Item.select{|item| item.name if item.theme > item.category}
+        sorted_by_cat = Item.select{|item| item.category == category}
         sorted_by_cat.each do |item|
             item_list[item.name] = item.price
         end
@@ -39,6 +36,16 @@ class Item < ActiveRecord::Base
         puts item_list
     end
 
+    # Find items by name
+    def self.find_by_name(name)
+        item_list = {}
+        sorted_by_name = Item.select{|item| item.name if item.name.include?(name)}
+        sorted_by_name.each do |item|
+            item_list[item.name] = item.price
+        end
+        puts "Please see items that match your search words '#{name}':"
+        puts item_list
+    end
 
     #See whether this item has been given as a gift
 

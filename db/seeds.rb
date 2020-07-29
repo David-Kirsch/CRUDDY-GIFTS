@@ -6,11 +6,11 @@ User.delete_all
 Item.delete_all
 Gift.delete_all
 
-User.create(name: "David", dob: 10191983)
-User.create(name: "Amit", dob: 105011995)
-User.create(name: "Roy", dob: 109251985)
-User.create(name: "Chelsea", dob: 10121987)
-User.create(name: "Jordan", dob: 108231985)
+User.create(name: "David", dob: "1983/10/19")
+User.create(name: "Amit", dob: "1995/05/01")
+User.create(name: "Roy", dob: "1985/09/25")
+User.create(name: "Chelsea", dob: "1987/10/12")
+User.create(name: "Jordan", dob: "1985/08/23")
 
 Item.create(name: "Arc Soundbar", brand: "Sonos", price: 799.99, category: "Electronics", description: 
 "Transform your music or watching experience with this Sonos Arc Premium smart soundbar. " + 

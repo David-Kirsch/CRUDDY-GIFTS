@@ -103,4 +103,11 @@ class User < ActiveRecord::Base
             "#{gift.item.brand} - #{gift.item.name} : $#{gift.item.price}"
         end.uniq
     end
+
+    def age(dob)
+        now = Time.now
+        user_age = now.year - self.dob.year - ((now.month > self.dob.month || (now.month == self.dob.month && now.day >= self.dob.day)) ? 0 : 1)
+        user_age
+    end
+
 end
