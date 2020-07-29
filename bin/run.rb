@@ -1,5 +1,7 @@
 require_relative '../config/environment'
-# access API key through hash entry
+
+
+CLI.welcome
 
 
 puts "HELLO WORLD"
