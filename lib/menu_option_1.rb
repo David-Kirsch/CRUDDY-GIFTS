@@ -77,7 +77,7 @@ class CLI1
     def self.find_items_in_category
         puts "---------------------------"
         puts "CRUDDY Gifts Category Filter".cyan.on_black
-        puts "Please enter your gift category:"
+        puts "Please enter your gift category: #{Item.all_categories}"
         gift_category = gets.chomp
         if gift_category != "exit"
             Item.category_sorted(gift_category)

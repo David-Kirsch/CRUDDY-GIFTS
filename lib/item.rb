@@ -12,6 +12,13 @@ class Item < ActiveRecord::Base
     #     puts "Please see existing catalogue by price (ascending):"
     # end
 
+    #grab all categories from store
+    def self.all_categories
+        Item.all.map do |item|
+            item.category
+        end.uniq
+    end
+
     #Filter items in store by price threshold
     def self.price_sorted_by_threshold(price_threshold)
         sorted_by_price_threshold = Item.all.select{|item| item.price if item.price < price_threshold}
