@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
     #get the values from instances of #grab_all_gifts
     def see_all_gifts_received
         grab_all_gifts.map do |gift|
-           "From #{gift.giver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion #{gift.occasion}"
+           "From #{gift.giver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion: #{gift.occasion}"
         end
     end
 

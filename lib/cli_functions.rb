@@ -57,6 +57,7 @@ class CLI < ActiveRecord::Base
         if User.find_by(name: user_name)
             puts "Please enter your password:"
             password = gets.chomp
+            puts "---------------------------"
             user_profile = User.find_by(name: user_name)
             if(user_profile.password != nil)
                 if(user_profile.password == password)
@@ -92,6 +93,7 @@ class CLI < ActiveRecord::Base
             if response == "y"
                 puts "Please enter your password:"
                 new_pw = gets.chomp
+                puts "---------------------------"
                 valid = true  
                 puts "Please enter your date of birth (as yyyy/mm/dd):"
                 new_dob = gets.chomp
@@ -117,19 +119,20 @@ class CLI < ActiveRecord::Base
     end
 
     def self.view_profile
-        puts "---------------------------"
         puts "Welcome to you user profile snapshot".cyan.on_black
         puts "Name: #{self.user_data.name}"
         puts "DOB: #{self.user_data.dob.year}/#{self.user_data.dob.month}/#{self.user_data.dob.day}"
         puts "Gifts Received: "
-        self.user_data.see_all_gifts_received.each {|gift| puts gift }
+        self.user_data.see_all_gifts_received.each {|gift| puts gift}
         puts "---------------------------"
     end
 
     def self.view_menu
+        puts "---------------------------"
         puts "What would you like to do? Please select from the options below.".cyan.on_black
         puts "1. View the gift store and go gift shopping"
         puts "2. Analyse your gift profile"
+        puts "Type 'exit' to quit the program"
         puts "---------------------------"
         user_input = gets.chomp
         if(user_input.downcase == "exit")

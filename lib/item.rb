@@ -45,11 +45,13 @@ class Item < ActiveRecord::Base
     end
 
     def self.output_formatted(item)
+        puts "---------------------------"
         puts "Gift Name: #{item.name}"
         puts "Gift Brand: #{item.brand}"
-        puts "Price: #{item.price}"
+        puts "Price: $#{item.price}"
         puts "Product Description: #{item.description}"
         puts "Press enter to see next product."
+        puts "---------------------------"
         next_item = gets.chomp
     end
 

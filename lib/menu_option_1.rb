@@ -50,6 +50,7 @@ class CLI1
 # Option 1
 
     def self.view_gift_store
+        puts "---------------------------"
         puts "CRUDDY Gifts Store Item List"
         Item.all.each do |item|
             Item.output_formatted(item)
@@ -59,8 +60,8 @@ class CLI1
 # Option 2
 
     def self.find_items_in_budget
+        puts "---------------------------"
         puts "CRUDDY Gifts Budget Filter" 
-        self.exit_prompt
         puts "Please enter your gift budget:"
         price_budget = gets.chomp
         if price_budget != "exit"
@@ -74,8 +75,8 @@ class CLI1
 # Option 3
 
     def self.find_items_in_category
+        puts "---------------------------"
         puts "CRUDDY Gifts Category Filter" 
-        self.exit_prompt
         puts "Please enter your gift category:"
         gift_category = gets.chomp
         if gift_category != "exit"
@@ -88,8 +89,8 @@ class CLI1
 # Option 4
 
     def self.find_items_by_name
+        puts "---------------------------"
         puts "CRUDDY Gifts Search Filter" 
-        self.exit_prompt
         puts "Please enter your gift name or keywords:"
         gift_name = gets.chomp
         if gift_name != "exit"
@@ -102,6 +103,7 @@ class CLI1
 # Option 5
 
     def self.upcoming_birthday
+        puts "---------------------------"
         now = Time.now
         upcoming_birthdays = User.all.select{|user| user.dob.month > now.month && user.dob.month - now.month < 3}
         upcoming_birthdays = upcoming_birthdays.sort_by{|birthday| birthday.dob.month}
@@ -116,12 +118,6 @@ class CLI1
 # Option 6
 
 #>> In User class
-
-# Helper Functions
-
-    def self.exit_prompt
-        puts "Please type 'exit' to leave this page and head back to to the option menu."
-    end
 
 
 end

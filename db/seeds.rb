@@ -7,7 +7,7 @@ Item.delete_all
 Gift.delete_all
 
 User.create(name: "David", dob: "1983/10/19", password: "code")
-User.create(name: "Amit", dob: "1995/05/01")
+User.create(name: "Amit", dob: "1995/05/01", password: "hello")
 User.create(name: "Roy", dob: "1985/09/25")
 User.create(name: "Chelsea", dob: "1987/10/12")
 User.create(name: "Jordan", dob: "1985/08/23")

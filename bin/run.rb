@@ -9,19 +9,17 @@ while true do
     if selection1 == 1
         selection2 = CLI1.summary_of_options.to_i
         CLI1.run_option1(selection2)
-        puts "Please enter to continue or type 'exit' to exit program".red
-        exit_call = gets.chomp
-        if exit_call == "exit"
-            return false
-        end
-    end
-    if selection1 == 2
+    elsif selection1 == 2
         selection2 = CLI2.summary_of_options.to_i
         CLI2.run_option2(selection2)
-        puts "Please enter to continue or type 'exit' to exit program".red
-        exit_call = gets.chomp
-        if exit_call == "exit"
-            return false
-        end
+    elsif selection1 = "exit"
+        CLI.user_data.clear
+        return false
+    end
+    puts "Please enter to continue or type 'exit' to exit program".red
+    exit_call = gets.chomp
+    if exit_call == "exit"
+        CLI.user_data.clear
+        return false
     end
 end
