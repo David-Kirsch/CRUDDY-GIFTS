@@ -141,6 +141,9 @@ class CLI < ActiveRecord::Base
         user_input
     end
 
+    def clear
+        @@user.clear
+    end
 
 
 
