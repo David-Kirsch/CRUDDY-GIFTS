@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
         end
     end
 
+    
+
     #get the values from instances of #grab_all_gifts
     def see_all_gifts_received
         grab_all_gifts.map do |gift|
@@ -86,6 +88,7 @@ class User < ActiveRecord::Base
         chosen_gift = CLI1.find_items_by_name
         puts "Enter the occasion for the gift:"
         gift_occasion = gets.chomp
+        Gift.create(occasion: gift_occasion, giver_id: self.id, receiver_id: friend_profile.id, item_id: chosen_gift[0].id)
         puts "You have given #{friend_name} a(n) #{chosen_gift.first.name} for their #{gift_occasion}!"
     end
 

@@ -12,9 +12,42 @@ class CLI < ActiveRecord::Base
     end
     
     def self.welcome
-        puts "---------------------------"
-        puts "Welcome to the CRUDDY Gifts!"
-        puts "---------------------------"
+         puts"
+                                                                                                                                
+                                                                                                                         
+            CCCCCCCCCCCCCRRRRRRRRRRRRRRRRR   UUUUUUUU     UUUUUUUUDDDDDDDDDDDDD     DDDDDDDDDDDDD       YYYYYYY       YYYYYYY
+         CCC::::::::::::CR::::::::::::::::R  U::::::U     U::::::UD::::::::::::DDD  D::::::::::::DDD    Y:::::Y       Y:::::Y
+       CC:::::::::::::::CR::::::RRRRRR:::::R U::::::U     U::::::UD:::::::::::::::DDD:::::::::::::::DD  Y:::::Y       Y:::::Y
+      C:::::CCCCCCCC::::CRR:::::R     R:::::RUU:::::U     U:::::UUDDD:::::DDDDD:::::DDD:::::DDDDD:::::D Y::::::Y     Y::::::Y
+     C:::::C       CCCCCC  R::::R     R:::::R U:::::U     U:::::U   D:::::D    D:::::DD:::::D    D:::::DYYY:::::Y   Y:::::YYY
+    C:::::C                R::::R     R:::::R U:::::D     D:::::U   D:::::D     D:::::D:::::D     D:::::D  Y:::::Y Y:::::Y   
+    C:::::C                R::::RRRRRR:::::R  U:::::D     D:::::U   D:::::D     D:::::D:::::D     D:::::D   Y:::::Y:::::Y    
+    C:::::C                R:::::::::::::RR   U:::::D     D:::::U   D:::::D     D:::::D:::::D     D:::::D    Y:::::::::Y     
+    C:::::C                R::::RRRRRR:::::R  U:::::D     D:::::U   D:::::D     D:::::D:::::D     D:::::D     Y:::::::Y      
+    C:::::C                R::::R     R:::::R U:::::D     D:::::U   D:::::D     D:::::D:::::D     D:::::D      Y:::::Y       
+    C:::::C                R::::R     R:::::R U:::::D     D:::::U   D:::::D     D:::::D:::::D     D:::::D      Y:::::Y       
+     C:::::C       CCCCCC  R::::R     R:::::R U::::::U   U::::::U   D:::::D    D:::::DD:::::D    D:::::D       Y:::::Y       
+      C:::::CCCCCCCC::::CRR:::::R     R:::::R U:::::::UUU:::::::U DDD:::::DDDDD:::::DDD:::::DDDDD:::::D        Y:::::Y       
+       CC:::::::::::::::CR::::::R     R:::::R  UU:::::::::::::UU  D:::::::::::::::DDD:::::::::::::::DD      YYYY:::::YYYY    
+         CCC::::::::::::CR::::::R     R:::::R    UU:::::::::UU    D::::::::::::DDD  D::::::::::::DDD        YYYYYYYYYYYYY ".cyan.on_black 
+  puts "             CCCCCGGGGGGGGGGGGGIIIIIIIIIIFFFFFFFFFFFFFFFFFFFFFFTTTTTTTTTTTTTTTTTTTTTTTDDDSSSSSSSSSSSSSSS                                                     GGG::::::::::::GI::::::::IF::::::::::::::::::::FT:::::::::::::::::::::T SS:::::::::::::::S                     
+            GG:::::::::::::::GI::::::::IF::::::::::::::::::::FT:::::::::::::::::::::TS:::::SSSSSS::::::S                     
+           G:::::GGGGGGGG::::GII::::::IIFF::::::FFFFFFFFF::::FT:::::TT:::::::TT:::::TS:::::S     SSSSSSS                     
+          G:::::G       GGGGGG  I::::I    F:::::F       FFFFFFTTTTTT  T:::::T  TTTTTTS:::::S                                 
+         G:::::G                I::::I    F:::::F                     T:::::T        S:::::S                                 
+         G:::::G                I::::I    F::::::FFFFFFFFFF           T:::::T         S::::SSSS                              
+         G:::::G    GGGGGGGGGG  I::::I    F:::::::::::::::F           T:::::T          SS::::::SSSSS                         
+         G:::::G    G::::::::G  I::::I    F:::::::::::::::F           T:::::T            SSS::::::::SS                       
+         G:::::G    GGGGG::::G  I::::I    F::::::FFFFFFFFFF           T:::::T               SSSSSS::::S                      
+         G:::::G        G::::G  I::::I    F:::::F                     T:::::T                    S:::::S                     
+          G:::::G       G::::G  I::::I    F:::::F                     T:::::T                    S:::::S                     
+           G:::::GGGGGGGG::::GII::::::IIFF:::::::FF                 TT:::::::TT      SSSSSSS     S:::::S                     
+            GG:::::::::::::::GI::::::::IF::::::::FF                 T:::::::::T      S::::::SSSSSS:::::S                     
+              GGG::::::GGG:::GI::::::::IF::::::::FF                 T:::::::::T      S:::::::::::::::SS                      
+                 GGGGGG   GGGGIIIIIIIIIIFFFFFFFFFFF                 TTTTTTTTTTT       SSSSSSSSSSSSSSS                        
+                                                                                                                             
+                                                                                                                             
+        ".magenta.on_black
 
     end
     
@@ -26,8 +59,13 @@ class CLI < ActiveRecord::Base
             puts "Please enter your password:"
             password = gets.chomp
             user_profile = User.find_by(name: user_name)
-            puts "Welcome back #{user_name}!"
-            puts "---------------------------"
+            if(user_profile.password == password)
+                puts "Welcome back #{user_name}!"
+                puts "---------------------------"
+            else
+                puts "Sorry, you do not have the correct credentials."
+                self.login
+            end
         else
             puts "You seem like a new user. Would you like to make a new profile? (y/n)"
             response = gets.chomp
