@@ -12,7 +12,7 @@ while true do
     elsif selection1 == 2
         selection2 = CLI2.summary_of_options.to_i
         CLI2.run_option2(selection2)
-    elsif selection1 = "exit"
+    elsif selection1 == "exit"
         CLI.user_data.clear
         return false
     end
