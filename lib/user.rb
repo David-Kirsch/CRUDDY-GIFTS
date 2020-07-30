@@ -12,7 +12,15 @@ class User < ActiveRecord::Base
         end
     end
 
-    
+    #all gifts given
+    def gifts_given
+        Gift.all.select do |gift|
+            if(gift.giver_id == self.id)
+                gift
+            end
+        end
+    end
+  
 
     #get the values from instances of #grab_all_gifts
     def see_all_gifts_received
@@ -39,7 +47,7 @@ class User < ActiveRecord::Base
 
     #lists all the gifts that has been given
     def all_gifts_given
-        self.given.map do |gift|
+        gifts_given.map do |gift|
           "To #{gift.receiver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion #{gift.occasion}"
         end
     end

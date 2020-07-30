@@ -1,6 +1,7 @@
 require_relative './user'
 require_relative './gift'
 require_relative './item'
+require 'io/console'
 
 
 class CLI < ActiveRecord::Base
@@ -56,8 +57,7 @@ class CLI < ActiveRecord::Base
         puts "---------------------------"
         if User.find_by(name: user_name)
             puts "Please enter your password:"
-            password = gets.chomp
-            puts "---------------------------"
+            password = STDIN.noecho(&:gets).chomp
             user_profile = User.find_by(name: user_name)
             if(user_profile.password != nil)
                 if(user_profile.password == password)
@@ -71,7 +71,7 @@ class CLI < ActiveRecord::Base
                         birthdate = gets.chomp
                         if(user_profile.dob == birthdate)
                             puts "Please enter a new password"
-                            password = gets.chomp
+                            password = STDIN.noecho(&:gets).chomp
                             user_profile.password = password
                             user_profile.save
                         else
@@ -82,7 +82,7 @@ class CLI < ActiveRecord::Base
                 end
             else
                 puts "We see you have not set a password yet. Please enter a password you would like to use for login."
-                password = gets.chomp
+                password = STDIN.noecho(&:gets).chomp
                 user_profile.password = password
                 user_profile.save
                 
@@ -96,10 +96,13 @@ class CLI < ActiveRecord::Base
                 puts "---------------------------"
                 valid = true  
                 puts "Please enter your date of birth (as yyyy/mm/dd):"
-                new_dob = gets.chomp
+                new_dob = STDIN.noecho(&:gets).chomp
                 while(valid)
                     if(new_dob.length == 10)
-                        user_profile = User.create(name:user_name, dob:new_dob, password: new_pd = nil)
+                        if(new_pw.length == 0)
+                            new_pw = nil
+                        end
+                        user_profile = User.create(name:user_name, dob:new_dob, password: new_pw)
                         puts "---------------------------"
                         valid = false
                     else
