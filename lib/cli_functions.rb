@@ -139,12 +139,13 @@ class CLI < ActiveRecord::Base
         puts "---------------------------"
         user_input = gets.chomp
         if(user_input.downcase == "exit")
+          @@user.clear
             exit
         end
         user_input
     end
 
-    def clear
+    def self.clear
         @@user.clear
     end
 
