@@ -61,7 +61,7 @@ class CLI1
 
     def self.find_items_in_budget
         puts "---------------------------"
-        puts "CRUDDY Gifts Budget Filter" 
+        puts "CRUDDY Gifts Budget Filter".cyan.on_black
         puts "Please enter your gift budget:"
         price_budget = gets.chomp
         if price_budget != "exit"
@@ -76,7 +76,7 @@ class CLI1
 
     def self.find_items_in_category
         puts "---------------------------"
-        puts "CRUDDY Gifts Category Filter" 
+        puts "CRUDDY Gifts Category Filter".cyan.on_black
         puts "Please enter your gift category:"
         gift_category = gets.chomp
         if gift_category != "exit"
@@ -90,7 +90,7 @@ class CLI1
 
     def self.find_items_by_name
         puts "---------------------------"
-        puts "CRUDDY Gifts Search Filter" 
+        puts "CRUDDY Gifts Search Filter".cyan.on_black
         puts "Please enter your gift name or keywords:"
         gift_name = gets.chomp
         if gift_name != "exit"
@@ -104,6 +104,7 @@ class CLI1
 
     def self.upcoming_birthday
         puts "---------------------------"
+        puts "Upcoming Birthdays (within the next 3 months)".cyan.on_black
         now = Time.now
         upcoming_birthdays = User.all.select{|user| user.dob.month > now.month && user.dob.month - now.month < 3}
         upcoming_birthdays = upcoming_birthdays.sort_by{|birthday| birthday.dob.month}
