@@ -29,12 +29,12 @@ Item.create(name: "Clue Game of Thrones Board Game", brand: "USAOPOLY", price: 7
 "a double-sided game board, players choose to solve the murder mystery in the Red Keep or in Meereen. "+
 "Who was responsible for plotting the murder? What weapon was used and where did the crime take place?")
 
-Item.create(name: "Pure Zen Tea Tumbler with Infuser", brand: "Pure Zen Tea", price: 34.95, category: "Home & Kitchen", description: 
+Item.create(name: "Pure Zen Tea Tumbler with Infuser", brand: "Pure Zen Tea", price: 34.95, category: "HomeGoods", description: 
 "Now, there is no need to wait for your tea to steep before rushing out the door every morning. "+
 "You just drop your favorite loose leaf blend, or even ready-made teabags into the infuser basket, "+
 "fill the tumbler with water, and you are ready to go.")
 
-Item.create(name: "Stormtrooper Waffle Maker", brand: "Uncanny Brands", price: 61.58, category: "Home & Kitchen", description: 
+Item.create(name: "Stormtrooper Waffle Maker", brand: "Uncanny Brands", price: 61.58, category: "HomeGoods", description: 
 "All fans of the Galactic Empire and Imperial Army will love our Star Wars Stormtrooper Waffle Maker. "+
 "Take breakfast to a galaxy far, far away with this non-stick waffle maker. It makes tasty waffles your way, "+
 "with five temperature settings that let you make waffles quickly and easily. Whether you like them brown and "+
@@ -48,14 +48,14 @@ Item.create(name: "The Travel Book: A Journey Through Every Country in the World
 "incredible photography illustrates each country, depicting what life is like in each nation from photographic "+
 "portraits of people, beautiful landscape photographs and vibrant street photography. This premium packaged 448-page "+
 "book with beautiful rainbow foil on the cover will make an impressive gift.")
-Item.create(name: "Wood Grain Essential Oil Diffuser", brand: "InnoGear", price: 19.99, category: "Home & Health", description: 
+Item.create(name: "Wood Grain Essential Oil Diffuser", brand: "InnoGear", price: 19.99, category: "HomeGoods", description: 
 "InnoGear diffusers comprise the ultrasonic technology that breaks up essential oil into microparticles, which "+
 "improves the diffusion process since essential oils are not heated. Use it to improve your home's air quality, "+
 "cover the smell of pets or smoking, and protect you family from excessively dry season. Incorporate the benefits "+
 "of aromatherapy into your everyday lifestyle. The elegant wood grain design fits in with the most decor and brings "+
 "a close-to-nature feeling to your home or office.")
 
-Item.create(name: "Scratch Off Wall Map of The USA", brand: "Maps International", price: 23.99, category: "Office & Home", description: 
+Item.create(name: "Scratch Off Wall Map of The USA", brand: "Maps International", price: 23.99, category: "HomeGoods", description: 
 "Our brilliant concept map of the US allows visited destinations to be scratched off, revealing the beautifully styled up to "+
 "date USA poster map underneath. The perfect wall map poster gift for travel enthusiasts, the scratch off map design allows "+
 "complete personalization of the large map of the US to display a unique travel story. Just grab a coin and scratch off all "+

@@ -4,7 +4,6 @@ require_relative './item'
 
 
 class CLI < ActiveRecord::Base
-
     @@user = []
 
     def self.user_data
@@ -14,7 +13,7 @@ class CLI < ActiveRecord::Base
     def self.welcome
          puts"
                                                                                                                                 
-                                                                                                                         
+                                                                                                                            
             CCCCCCCCCCCCCRRRRRRRRRRRRRRRRR   UUUUUUUU     UUUUUUUUDDDDDDDDDDDDD     DDDDDDDDDDDDD       YYYYYYY       YYYYYYY
          CCC::::::::::::CR::::::::::::::::R  U::::::U     U::::::UD::::::::::::DDD  D::::::::::::DDD    Y:::::Y       Y:::::Y
        CC:::::::::::::::CR::::::RRRRRR:::::R U::::::U     U::::::UD:::::::::::::::DDD:::::::::::::::DD  Y:::::Y       Y:::::Y
@@ -48,7 +47,7 @@ class CLI < ActiveRecord::Base
                                                                                                                              
                                                                                                                              
         ".magenta.on_black
-
+        @@count = 0
     end
     
     def self.login
@@ -59,12 +58,33 @@ class CLI < ActiveRecord::Base
             puts "Please enter your password:"
             password = gets.chomp
             user_profile = User.find_by(name: user_name)
-            if(user_profile.password == password)
-                puts "Welcome back #{user_name}!"
-                puts "---------------------------"
+            if(user_profile.password != nil)
+                if(user_profile.password == password)
+                    puts "Welcome back #{user_name}!"
+                    puts "---------------------------"
+                else
+                    puts "Sorry, you do not have the correct credentials."
+                    @@count+=1
+                    if(@@count >=3)
+                        puts "You have exceeded the limit of tries. You can reset your password by typing in your birthday (yyyy/mm/dd)"
+                        birthdate = gets.chomp
+                        if(user_profile.dob == birthdate)
+                            puts "Please enter a new password"
+                            password = gets.chomp
+                            user_profile.password = password
+                            user_profile.save
+                        else
+                            puts "Sorry, that is not the correct birthdate."
+                        end
+                    end
+                    self.login
+                end
             else
-                puts "Sorry, you do not have the correct credentials."
-                self.login
+                puts "We see you have not set a password yet. Please enter a password you would like to use for login."
+                password = gets.chomp
+                user_profile.password = password
+                user_profile.save
+                
             end
         else
             puts "You seem like a new user. Would you like to make a new profile? (y/n)"
@@ -72,13 +92,24 @@ class CLI < ActiveRecord::Base
             if response == "y"
                 puts "Please enter your password:"
                 new_pw = gets.chomp
-                puts "Please enter you date of birthday (as yyyy/mm/dd):"
+                valid = true  
+                puts "Please enter your date of birth (as yyyy/mm/dd):"
                 new_dob = gets.chomp
-                user_profile = User.create(name:user_name, dob:new_dob)
-                puts "---------------------------"
+                while(valid)
+                    if(new_dob.length == 10)
+                        user_profile = User.create(name:user_name, dob:new_dob, password: new_pd = nil)
+                        puts "---------------------------"
+                        valid = false
+                    else
+                        puts "Please enter your date of birth (as yyyy/mm/dd):"
+                        new_dob = gets.chomp
+                    end
+                end
+            
             else
                 puts "Thanks for using CRUDDY Gifts. We look forward to seeing you soon."
                 puts "---------------------------"
+                exit
             end
         end
         @@user << user_profile
@@ -87,19 +118,23 @@ class CLI < ActiveRecord::Base
 
     def self.view_profile
         puts "---------------------------"
-        puts "Welcome to you user profile snapshot"
+        puts "Welcome to you user profile snapshot".cyan.on_black
         puts "Name: #{self.user_data.name}"
         puts "DOB: #{self.user_data.dob.year}/#{self.user_data.dob.month}/#{self.user_data.dob.day}"
-        puts "Gifts Received: #{self.user_data.see_all_gifts_received}"
+        puts "Gifts Received: "
+        self.user_data.see_all_gifts_received.each {|gift| puts gift }
         puts "---------------------------"
     end
 
     def self.view_menu
-        puts "What would you like to do? Please select from the options below."
+        puts "What would you like to do? Please select from the options below.".cyan.on_black
         puts "1. View the gift store and go gift shopping"
         puts "2. Analyse your gift profile"
         puts "---------------------------"
         user_input = gets.chomp
+        if(user_input.downcase == "exit")
+            exit
+        end
         user_input
     end
 

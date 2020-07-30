@@ -17,14 +17,14 @@ class User < ActiveRecord::Base
     #get the values from instances of #grab_all_gifts
     def see_all_gifts_received
         grab_all_gifts.map do |gift|
-           "From #{gift.giver.name}: #{gift.item.brand} - #{gift.item.name}"
+           "From #{gift.giver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion #{gift.occasion}"
         end
     end
 
     #see all the gifts from a specific user
     def see_all_gifts_from(user)
         see_all_gifts_received.select do |gift|
-            gift.include?(user)
+            gift.downcase.include?(user)
         end
     end
 
@@ -40,14 +40,14 @@ class User < ActiveRecord::Base
     #lists all the gifts that has been given
     def all_gifts_given
         self.given.map do |gift|
-            puts "To #{gift.receiver.name}: #{gift.item.brand} - #{gift.item.name}"
+          "To #{gift.receiver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion #{gift.occasion}"
         end
     end
 
     #lists all the gifts given to a specific person
     def gifts_given_to(person)
         all_gifts_given.select do |gift|
-            if(gift.downcase.include?(person.downcase))
+            if(gift.downcase.include?(person))
                 gift
             end
         end
@@ -101,6 +101,13 @@ class User < ActiveRecord::Base
         end
     end
 
+    #grab all the occasion names
+    def list_of_occasion_names
+        all_gifts_exchanged.map do |gift|
+            gift.occasion
+        end.uniq
+    end
+
     #list the values from the Gift instances by occasion attr
     def find_gift_by_occasion(occ)
         find_instances_by_occasion(occ).map do |gift|
@@ -115,6 +122,13 @@ class User < ActiveRecord::Base
                 gift
             end
         end
+    end
+
+    #list all category names
+    def list_of_category_names
+        all_gifts_exchanged.map do |gift|
+            gift.item.category
+        end.uniq
     end
 
     #lists the gifts given/received by item category
