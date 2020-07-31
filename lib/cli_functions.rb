@@ -135,7 +135,7 @@ class CLI < ActiveRecord::Base
     def self.view_profile
         puts "Welcome to you user profile snapshot".cyan.on_black
         puts "Name: #{self.user_data.name}"
-        puts "DOB: #{self.user_data.dob.year}/#{self.user_data.dob.month}/#{self.user_data.dob.day}"
+        puts "DOB: #{self.user_data.dob.month}/#{self.user_data.dob.day}/#{self.user_data.dob.year}"
         puts "Gifts Received: "
         self.user_data.see_all_gifts_received.each {|gift| puts gift}
         puts "---------------------------"
