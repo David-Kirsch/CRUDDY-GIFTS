@@ -67,7 +67,7 @@ class CLI < ActiveRecord::Base
                     puts "Sorry, you do not have the correct credentials."
                     @@count+=1
                     if(@@count >=3)
-                        puts "You have exceeded the limit of tries. You can reset your password by typing in your birthday (yyyy/mm/dd)"
+                        puts "You have exceeded the limit of tries. You can reset your password by typing in your birthday (yyyy/mm/dd)".red
                         birthdate = gets.chomp
                         if(user_profile.dob == birthdate)
                             puts "Please enter a new password"

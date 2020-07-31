@@ -10,7 +10,7 @@ require "date"
 class CLI1
 
 # Option Master Menu and Executable Commands
-
+    
     def self.summary_of_options
         puts "Please choose from the following selections:".cyan.on_black
         puts "************** GENERAL SEARCH *******************"
