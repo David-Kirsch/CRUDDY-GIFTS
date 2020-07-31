@@ -12,7 +12,7 @@ class CLI1
 # Option Master Menu and Executable Commands
 
     def self.summary_of_options
-        puts "Please choose from the following selections:"
+        puts "Please choose from the following selections:".cyan.on_black
         puts "************** GENERAL SEARCH *******************"
         puts "1. View the whole gift store"
         puts "2. Find gifts within your budget"
@@ -51,7 +51,7 @@ class CLI1
 
     def self.view_gift_store
         puts "---------------------------"
-        puts "CRUDDY Gifts Store Item List"
+        puts "CRUDDY Gifts Store Item List".cyan.on_black
         Item.all.each do |item|
             Item.output_formatted(item)
         end
@@ -106,7 +106,11 @@ class CLI1
         puts "---------------------------"
         puts "Upcoming Birthdays (within the next 3 months)".cyan.on_black
         now = Time.now
-        upcoming_birthdays = User.all.select{|user| user.dob.month > now.month && user.dob.month - now.month < 3}
+        upcoming_birthdays = User.all.select do |user| 
+            if(CLI.user_data.see_all_friends.include?(user.name))
+                user.dob.month > now.month && user.dob.month - now.month <= 3 
+            end 
+        end
         upcoming_birthdays = upcoming_birthdays.sort_by{|birthday| birthday.dob.month}
         upcoming_birthdays.each do |birthday|
             puts "Name: #{birthday.name}"

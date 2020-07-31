@@ -84,7 +84,18 @@ class CLI < ActiveRecord::Base
                 puts "We see you have not set a password yet. Please enter a password you would like to use for login."
                 password = STDIN.noecho(&:gets).chomp
                 user_profile.password = password
-                user_profile.save
+                verified = false
+                while(!verified)
+                    puts "Please enter your date of birth (as yyyy/mm/dd):"
+                    birthdate = gets.chomp
+                    if(birthdate.length != 10)
+                        puts "Please try again."
+                    else
+                        user_profile.dob = birthdate
+                        user_profile.save
+                        verified = true
+                    end
+                end
                 
             end
         else
@@ -92,11 +103,11 @@ class CLI < ActiveRecord::Base
             response = gets.chomp
             if response == "y"
                 puts "Please enter your password:"
-                new_pw = gets.chomp
+                new_pw = STDIN.noecho(&:gets).chomp
                 puts "---------------------------"
                 valid = true  
                 puts "Please enter your date of birth (as yyyy/mm/dd):"
-                new_dob = STDIN.noecho(&:gets).chomp
+                new_dob = gets.chomp
                 while(valid)
                     if(new_dob.length == 10)
                         if(new_pw.length == 0)

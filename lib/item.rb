@@ -30,7 +30,7 @@ class Item < ActiveRecord::Base
 
     # Items by themes (sort by Group attribute)
     def self.category_sorted(category)
-        sorted_by_cat = Item.select{|item| item.category == category}
+        sorted_by_cat = Item.select{|item| item.category.downcase == category.downcase}
         puts "Please see items that are in the #{category} category:"
         sorted_by_cat.each do |item|
             Item.output_formatted(item)
@@ -41,7 +41,7 @@ class Item < ActiveRecord::Base
     def self.find_by_name(item_name)
         item_list = []
         Item.all.each do |item|
-            if item.description.include?(item_name)
+            if item.name.downcase.include?(item_name.downcase)
                 item_list << item
             end
         end

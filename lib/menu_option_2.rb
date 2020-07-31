@@ -53,14 +53,14 @@ class CLI2
             puts "---------------------------"
             puts "Enter the occasion you are looking for gifts by: #{self.user_info.list_of_occasion_names}".cyan.on_black
             occasion = gets.chomp
-            puts "Here is a list of all items that have been given for #{occasion} gifts:".cyan.on_black
+            puts "Here is a list of all gifts that have been given for #{occasion} gifts:".cyan.on_black
             puts self.user_info.find_gift_by_occasion(occasion)
             puts "---------------------------"
         when 7
             puts "---------------------------"
             puts "Enter the category you are looking for gifts by: #{self.user_info.list_of_category_names}".cyan.on_black
             category = gets.chomp
-            puts "Here is a list of all items that are considered #{category}:".cyan.on_black
+            puts "Here is a list of all gifts that are considered #{category}:".cyan.on_black
             puts self.user_info.find_gift_by_category(category)
             puts "---------------------------"
         end

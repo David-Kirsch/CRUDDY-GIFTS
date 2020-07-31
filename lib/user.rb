@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
     #get the values from instances of #grab_all_gifts
     def see_all_gifts_received
         grab_all_gifts.map do |gift|
-           "From #{gift.giver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion: #{gift.occasion}"
+            "◆".cyan+"From #{gift.giver.name}: #{gift.item.brand}-#{gift.item.name}\n   Occasion: #{gift.occasion}"
         end
     end
 
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
     #lists all the gifts that has been given
     def all_gifts_given
         gifts_given.map do |gift|
-          "To #{gift.receiver.name}: #{gift.item.brand}-#{gift.item.name}, Occasion #{gift.occasion}"
+          "◆".cyan+" To #{gift.receiver.name}: #{gift.item.brand}-#{gift.item.name}, \n  Occasion #{gift.occasion}, Price: $#{gift.item.price}"
         end
     end
 
@@ -81,23 +81,19 @@ class User < ActiveRecord::Base
         if User.find_by(name: friend_name)
             friend_profile = User.find_by(name: friend_name)
         else
-            puts "Receipient not found. Would you like to create a new receipient? (y/n)"
-            response = gets.chomp
-            if response == "y"
-                puts "Please enter the name:"
-                new_name = gets.chomp
-                puts "Please enter you date of birthday (as yyyy/mm/dd): "
-                new_dob = gets.chomp
-                friend_profile = User.create(name: new_name, dob:new_dob)
-            else
-                "Unable to give a gift. Please try again later."
-            end
+            puts "❗️Receipient not found."+ "\nUser: #{friend_name} has now been added to the database.".green.bold
+                friend_profile = User.create(name: friend_name, dob:"9123/12/12")
         end
         chosen_gift = CLI1.find_items_by_name
-        puts "Enter the occasion for the gift:"
-        gift_occasion = gets.chomp
-        Gift.create(occasion: gift_occasion, giver_id: self.id, receiver_id: friend_profile.id, item_id: chosen_gift[0].id)
-        puts "You have given #{friend_name} a(n) #{chosen_gift.first.name} for their #{gift_occasion}!"
+        if(chosen_gift[0] == nil)
+            puts "❌Sorry, that item was not found. Please look at the gift store and then return back here."
+            CLI1.view_gift_store
+        else
+            puts "Enter the occasion for the gift:"
+            gift_occasion = gets.chomp
+            Gift.create(occasion: gift_occasion, giver_id: self.id, receiver_id: friend_profile.id, item_id: chosen_gift[0].id)
+            puts "You have given #{friend_name} a(n) #{chosen_gift.first.name} as a #{gift_occasion} gift!🎁"
+        end
     end
 
     #grabs all the Gift instances by the occasion attr

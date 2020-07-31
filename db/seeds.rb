@@ -48,12 +48,19 @@ Item.create(name: "The Travel Book: A Journey Through Every Country in the World
 "incredible photography illustrates each country, depicting what life is like in each nation from photographic "+
 "portraits of people, beautiful landscape photographs and vibrant street photography. This premium packaged 448-page "+
 "book with beautiful rainbow foil on the cover will make an impressive gift.")
+
 Item.create(name: "Wood Grain Essential Oil Diffuser", brand: "InnoGear", price: 19.99, category: "HomeGoods", description: 
 "InnoGear diffusers comprise the ultrasonic technology that breaks up essential oil into microparticles, which "+
 "improves the diffusion process since essential oils are not heated. Use it to improve your home's air quality, "+
 "cover the smell of pets or smoking, and protect you family from excessively dry season. Incorporate the benefits "+
 "of aromatherapy into your everyday lifestyle. The elegant wood grain design fits in with the most decor and brings "+
 "a close-to-nature feeling to your home or office.")
+
+Item.create(name: "A Truly Great Instructor is Hard to Find - MUG", brand: "CAE Design Co.", price: 19.99, category: "HomeGoods", description:
+"'A Truly Great Instructor is Hard to Find, difficult to part with and Impossible to forget'. This Coffee mug is a perfect drinkware "+
+"item for enjoying your morning, afternoon or after dinner coffee or tea drink in the comfort of your home kitchen or at work in your "+
+"office space. Our smooth, white ceramic cup has an easy-grip handle that feels great in your hand as you sip your hot or cold beverage "+
+"and for most designs we offer both an 11 ounce and 15 ounce size option.")
 
 Item.create(name: "Scratch Off Wall Map of The USA", brand: "Maps International", price: 23.99, category: "HomeGoods", description: 
 "Our brilliant concept map of the US allows visited destinations to be scratched off, revealing the beautifully styled up to "+
@@ -80,6 +87,7 @@ Item.create(name: "Humans of New York : Stories", brand: "Brandon Stanton", pric
 "steadily grew from a few hundred followers to, at present count, over eighteen million. In 2013, his book Humans of New York, "+
 "based on that blog, was published and immediately catapulted to the top of the NY Times Bestseller List where it has appeared "+
 "for over forty-five weeks.")
+
 
 Gift.create(occasion: "Birthday", giver_id: User.all[0].id, receiver_id: User.all[1].id, item_id: Item.all[1].id)
 Gift.create(occasion: "Birthday", giver_id: User.all[2].id, receiver_id: User.all[0].id, item_id: Item.all[1].id)
