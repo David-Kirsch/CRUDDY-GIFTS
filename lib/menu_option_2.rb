@@ -17,6 +17,7 @@ class CLI2
         puts "5. Search for gifts given to friend."
         puts "6. Search for gifts by occasion."
         puts "7. Search for gifts by category."
+        puts "8. Delete profile."
         selection = gets.chomp.to_i
     end
 
@@ -63,6 +64,14 @@ class CLI2
             puts "Here is a list of all gifts that are considered #{category}:".cyan.on_black
             puts self.user_info.find_gift_by_category(category)
             puts "---------------------------"
+        when 8
+            puts "Are you sure you want to remove yourself from the database? (y/n)"
+            response = gets.chomp
+            if(response.downcase == 'y')
+                self.user_info.delete_self
+                puts "Thanks for using CRUDDY gifts. See you again!"
+                exit
+            end
         end
     end  
 
