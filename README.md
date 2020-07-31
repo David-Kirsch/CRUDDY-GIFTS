@@ -25,5 +25,14 @@ CREATED BY:
 Amit -> github.com/amitdesh
 David -> github.com/David-Kirsch
 
+ 
+IF YOU ARE INTERESTED IN CONTRIBUTING TO THIS APPLICATION:
+Please fork this repo to your github account
+Clone it and create a new branch
+Make updates and commit
+Push the changes up and submit a pull request
+
+Thank you.
+
 
 

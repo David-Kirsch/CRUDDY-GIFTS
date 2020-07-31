@@ -56,7 +56,7 @@ Item.create(name: "Wood Grain Essential Oil Diffuser", brand: "InnoGear", price:
 "of aromatherapy into your everyday lifestyle. The elegant wood grain design fits in with the most decor and brings "+
 "a close-to-nature feeling to your home or office.")
 
-Item.create(name: "A Truly Great Instructor is Hard to Find - MUG", brand: "CAE Design Co.", price: 19.99, category: "HomeGoods", description:
+Item.create(name: "A Truly Great Instructor is Hard to Find, difficult to part with and Impossible to forget - MUG", brand: "CAE Design Co.", price: 19.99, category: "HomeGoods", description:
 "'A Truly Great Instructor is Hard to Find, difficult to part with and Impossible to forget'. This Coffee mug is a perfect drinkware "+
 "item for enjoying your morning, afternoon or after dinner coffee or tea drink in the comfort of your home kitchen or at work in your "+
 "office space. Our smooth, white ceramic cup has an easy-grip handle that feels great in your hand as you sip your hot or cold beverage "+
@@ -90,21 +90,10 @@ Item.create(name: "Humans of New York : Stories", brand: "Brandon Stanton", pric
 
 
 Gift.create(occasion: "Birthday", giver_id: User.all[0].id, receiver_id: User.all[1].id, item_id: Item.all[1].id)
-Gift.create(occasion: "Birthday", giver_id: User.all[2].id, receiver_id: User.all[0].id, item_id: Item.all[1].id)
-Gift.create(occasion: "Birthday", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: Item.all[3].id)
-Gift.create(occasion: "Wedding", giver_id: User.all[2].id, receiver_id: User.all[4].id, item_id: Item.all[4].id)
-Gift.create(occasion: "Anniversary", giver_id: User.all[3].id, receiver_id: User.all[0].id, item_id: Item.all[0].id)
-Gift.create(occasion: "Birthday", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: Item.all[6].id)
-Gift.create(occasion: "Wedding", giver_id: User.all[2].id, receiver_id: User.all[4].id, item_id: Item.all[8].id)
-Gift.create(occasion: "Anniversary", giver_id: User.all[3].id, receiver_id: User.all[0].id, item_id: Item.all[10].id)
-Gift.create(occasion: "Graduation", giver_id: User.all[4].id, receiver_id: User.all[2].id, item_id: Item.all[7].id)
-Gift.create(occasion: "Anniversary", giver_id: User.all[3].id, receiver_id: User.all[0].id, item_id: Item.all[1].id)
+Gift.create(occasion: "Christmas", giver_id: User.all[2].id, receiver_id: User.all[0].id, item_id: Item.all[1].id)
+Gift.create(occasion: "Graduation", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: Item.all[5].id)
 
-# Gift.create(occasion: "Birthday", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: 1)
-# Gift.create(occasion: "Wedding", giver_id: User.all[2].id, receiver_id: User.all[4].id, item_id: 4)
-# Gift.create(occasion: "Birthday", giver_id: User.all[1].id, receiver_id: User.all[3].id, item_id: 4)
-# Gift.create(occasion: "Wedding", giver_id: User.all[2].id, receiver_id: User.all[4].id, item_id: 4)
-# Gift.create(occasion: "Anniversary", giver_id: User.all[3].id, receiver_id: User.all[0].id, item_id: 5)
-# Gift.create(occasion: "Graduation", giver_id: User.all[4].id, receiver_id: User.all[2].id, item_id: 6)
+
+
 
 
