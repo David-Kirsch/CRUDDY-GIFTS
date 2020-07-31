@@ -20,6 +20,13 @@ class User < ActiveRecord::Base
             end
         end
     end
+
+    def delete_self
+        all_gifts_exchanged.each do |gift|
+            gift.destroy
+        end
+        self.destroy
+    end
   
 
     #get the values from instances of #grab_all_gifts
