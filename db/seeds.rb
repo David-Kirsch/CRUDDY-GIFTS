@@ -56,8 +56,8 @@ Item.create(name: "Wood Grain Essential Oil Diffuser", brand: "InnoGear", price:
 "of aromatherapy into your everyday lifestyle. The elegant wood grain design fits in with the most decor and brings "+
 "a close-to-nature feeling to your home or office.")
 
-Item.create(name: "A Truly Great Instructor is Hard to Find, difficult to part with and Impossible to forget - MUG", brand: "CAE Design Co.", price: 19.99, category: "HomeGoods", description:
-"'A Truly Great Instructor is Hard to Find, difficult to part with and Impossible to forget'. This Coffee mug is a perfect drinkware "+
+Item.create(name: "Flatiron School's Best Coach- MUG", brand: "CAE Design Co.", price: 19.99, category: "HomeGoods", description:
+"'Flatiron School's Best Coach'. This Coffee mug is a perfect drinkware "+
 "item for enjoying your morning, afternoon or after dinner coffee or tea drink in the comfort of your home kitchen or at work in your "+
 "office space. Our smooth, white ceramic cup has an easy-grip handle that feels great in your hand as you sip your hot or cold beverage "+
 "and for most designs we offer both an 11 ounce and 15 ounce size option.")
